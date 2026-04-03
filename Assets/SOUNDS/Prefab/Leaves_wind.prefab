@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 630512758581156044}
   - component: {fileID: 5767633906063448062}
+  - component: {fileID: 3112304899063652483}
   m_Layer: 0
   m_Name: Leaves_wind
   m_TagString: Untagged
@@ -44,7 +45,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fee327c7e5f36d34e87052fd7e61b7ed, type: 3}
   m_Resource: {fileID: 8300000, guid: fee327c7e5f36d34e87052fd7e61b7ed, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -129,3 +130,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3112304899063652483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699749223605251038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d9dbf86d97ca1438b58ea8c2030c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeavesAudio: {fileID: 5767633906063448062}
