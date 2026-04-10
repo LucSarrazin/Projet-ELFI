@@ -5,6 +5,10 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     Animator animator;
+    [SerializeField] private AudioSource audioSourceLeft;
+    [SerializeField] private AudioSource audioSourceRight;
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioClip doorClose;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +38,18 @@ public class DoorScript : MonoBehaviour
     }
 
     //Créer une fonction publique à appeler lors d'un animation event ?
-
+    private void OpenSound()
+    {
+        audioSourceLeft.clip = doorOpen;
+        audioSourceRight.clip = doorOpen;
+        audioSourceLeft.Play();
+        audioSourceRight.Play();
+    }
+    private void CloseSound()
+    {
+        audioSourceLeft.clip = doorClose;
+        audioSourceRight.clip = doorClose;
+        audioSourceLeft.Play();
+        audioSourceRight.Play();
+    }
 }
