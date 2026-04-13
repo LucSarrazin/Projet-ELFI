@@ -8974,7 +8974,7 @@ GameObject:
   - component: {fileID: 458074582}
   m_Layer: 0
   m_Name: InsideCollider
-  m_TagString: Untagged
+  m_TagString: Carrelage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -50192,7 +50192,7 @@ GameObject:
   - component: {fileID: 2077590550}
   m_Layer: 0
   m_Name: MeshCollider
-  m_TagString: Untagged
+  m_TagString: Carrelage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -51483,7 +51483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64065fda19aeba74094c8691620da52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepSound: {fileID: 0}
+  grassSound: {fileID: 8300000, guid: 44c4862f828458a43abc0805fc0753c8, type: 3}
+  tileSound: {fileID: 8300000, guid: c8a7e7d7ebb3d174cbed0b04923ab975, type: 3}
+  audioSource: {fileID: 919132148035236992}
+  pitchVariation: 0.1
 --- !u!143 &919132148035236991
 CharacterController:
   m_ObjectHideFlags: 0
