@@ -10,8 +10,15 @@ public class Character : MonoBehaviour
     float speed, verticalMovement;
     Vector3 direction, directionForward, directionRight, nextDir;
     Animator animator;
-    [SerializeField]
-    AudioClip stepSound;
+
+    [Header("Sons par type de sol")]
+    [SerializeField] private AudioClip grassSound; // Son extérieur (défaut)
+    [SerializeField] private AudioClip tileSound;  // Son carrelage
+    
+    [Header("Paramètres de variation")]
+    [SerializeField] private AudioSource audioSource;
+    [Range(0.05f, 0.3f)]
+    [SerializeField] private float pitchVariation = 0.1f; // Variation autour de 1.0
 
     // Start is called before the first frame update
     void Awake()
@@ -21,11 +28,13 @@ public class Character : MonoBehaviour
         nextDir = transform.forward;
         characterController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        gravity();
+        Gravity();
 
         Move();
 
@@ -86,7 +95,7 @@ public class Character : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction, transform.up);
     }
 
-    private void gravity()
+    private void Gravity()
     {
         if (verticalMovement <= 0 && characterController.isGrounded)
         {
@@ -98,19 +107,26 @@ public class Character : MonoBehaviour
         }
     }
 
-    // Fonction appelée lors de chaque pas grâce à un animation event intégré dans le cycle de marche du personnage
     public void StepSound()
     {
-        // À remplacer lorsque vous intégrerez les sons de pas
-        if (stepSound != null)
+        RaycastHit hit;
+        
+        if (Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 2.0f))
         {
-            GetComponent<AudioSource>().PlayOneShot(stepSound);
+            AudioClip clipToPlay = grassSound; // Son par défaut
+            
+            if (hit.collider.CompareTag("Carrelage"))
+            {
+                clipToPlay = tileSound;
+            }
+            
+            // Application du pitch aléatoire et lecture
+            if (clipToPlay != null && audioSource != null)
+            {
+                audioSource.pitch = Random.Range(1.0f - pitchVariation, 1.0f + pitchVariation);
+                
+                audioSource.PlayOneShot(clipToPlay);
+            }
         }
-        else
-        {
-            Debug.Log("Il faut intégrer l'audioclip dans le script Character !!!");
-        }
-
-
     }
 }
